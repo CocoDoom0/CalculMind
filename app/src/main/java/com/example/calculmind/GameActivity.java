@@ -2,11 +2,12 @@ package com.example.calculmind;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.Dialog;
+import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.TextView;
-
-import java.util.Objects;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -139,7 +140,7 @@ public class GameActivity extends AppCompatActivity {
                 return number1 * number2;
             case "/":
                 //arondir le resultat a au dixieme pres
-                return Math.round(( (double)number1 / (double)number2) * 10) / 10.0;
+                return Math.floor(( (double)number1 / (double)number2) * 10) / 10.0;
             default:
                 calculShow = "0";
                 return 0;
@@ -159,8 +160,30 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void checkHealthBar() {
-        if (healthBar == 0) {
-            //todo
+        if (healthBar <= 0) {
+            Dialog scoreDialog = new Dialog(this);
+            scoreDialog.setContentView(R.layout.popup_score);
+            TextView scoreTextView = scoreDialog.findViewById(R.id.textView_score);
+            EditText playerName = scoreDialog.findViewById(R.id.TextPersonName);
+            Button valideButton = scoreDialog.findViewById(R.id.buttonScore_valider);
+            Button cancelButton = scoreDialog.findViewById(R.id.buttonScore_annuler);
+
+            scoreTextView.setText("Votre score est de " + score + " points");
+            //todo trad connard
+            valideButton.setOnClickListener(view -> {
+                //todo ajouter le score dans la bdd
+                scoreDialog.dismiss();
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+            });
+
+            cancelButton.setOnClickListener(view -> {
+                scoreDialog.dismiss();
+                Intent intent = new Intent(this, MainActivity.class);
+                startActivity(intent);
+            });
+
+            scoreDialog.show();
         }
     }
 
