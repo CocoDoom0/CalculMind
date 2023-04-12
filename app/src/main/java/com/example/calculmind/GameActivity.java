@@ -4,6 +4,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.widget.Button;
+import android.widget.TextView;
 
 import java.util.Objects;
 
@@ -21,6 +22,10 @@ public class GameActivity extends AppCompatActivity {
     private Button button9;
     private Button buttonEnter;
     private Button buttonDelete;
+    private Button buttonDot;
+
+    private TextView textViewInput;
+    private TextView textViewCalcul;
 
     private String calculShow;
     private double calculResult;
@@ -31,49 +36,50 @@ public class GameActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_game);
+        textViewInput = findViewById(R.id.textViewInput);
+        textViewCalcul = findViewById(R.id.textViewCalcul);
         healthBar = 3;
         score = 0;
         enterNumber = null;
         generateNumber();
-        setContentView(R.layout.activity_game);
+        buttonDot = findViewById(R.id.button_dot);
+        buttonDot.setOnClickListener(view -> addNumberVirgule());
 
-        buttonVirgule = findViewById(R.id.buttonVirgule);
-        buttonVirgule.setOnClickListener(view -> addNumberVirgule());
-
-        button0 = findViewById(R.id.button0);
+        button0 = findViewById(R.id.button_0);
         button0.setOnClickListener(view -> addNumber(0));
 
-        button1 = findViewById(R.id.button1);
+        button1 = findViewById(R.id.button_1);
         button1.setOnClickListener(view -> addNumber(1));
 
-        button2 = findViewById(R.id.button2);
+        button2 = findViewById(R.id.button_2);
         button2.setOnClickListener(view -> addNumber(2));
 
-        button3 = findViewById(R.id.button3);
+        button3 = findViewById(R.id.button_3);
         button3.setOnClickListener(view -> addNumber(3));
 
-        button4 = findViewById(R.id.button4);
+        button4 = findViewById(R.id.button_4);
         button4.setOnClickListener(view -> addNumber(4));
 
-        button5 = findViewById(R.id.button5);
+        button5 = findViewById(R.id.button_5);
         button5.setOnClickListener(view -> addNumber(5));
 
-        button6 = findViewById(R.id.button6);
+        button6 = findViewById(R.id.button_6);
         button6.setOnClickListener(view -> addNumber(6));
 
-        button7 = findViewById(R.id.button7);
+        button7 = findViewById(R.id.button_7);
         button7.setOnClickListener(view -> addNumber(7));
 
-        button8 = findViewById(R.id.button8);
+        button8 = findViewById(R.id.button_8);
         button8.setOnClickListener(view -> addNumber(8));
 
-        button9 = findViewById(R.id.button9);
+        button9 = findViewById(R.id.button_9);
         button9.setOnClickListener(view -> addNumber(9));
 
-        buttonEnter = findViewById(R.id.buttonEnter);
-        buttonEnter.setOnClickListener(view -> );
+        buttonEnter = findViewById(R.id.button_entry);
+        buttonEnter.setOnClickListener(view -> checkResult());
 
-        buttonDelete = findViewById(R.id.buttonDelete);
+        buttonDelete = findViewById(R.id.button_del);
         buttonDelete.setOnClickListener(view -> deleteNumber());;
 
     }
@@ -84,6 +90,7 @@ public class GameActivity extends AppCompatActivity {
         } else {
             enterNumber = enterNumber + number;
         }
+        textViewCalcul.setText(enterNumber);
     }
 
     private void addNumberVirgule() {
@@ -92,6 +99,7 @@ public class GameActivity extends AppCompatActivity {
         } else {
             enterNumber = enterNumber + ".";
         }
+        textViewCalcul.setText(enterNumber);
     }
 
     private void deleteNumber() {
@@ -101,6 +109,7 @@ public class GameActivity extends AppCompatActivity {
             } else {
                 enterNumber = enterNumber.substring(0, enterNumber.length() - 1);
             }
+            textViewCalcul.setText(enterNumber);
         }
     }
 
@@ -108,9 +117,16 @@ public class GameActivity extends AppCompatActivity {
         String[] operator = {"+", "-", "*", "/"};
         int number1 = (int) (Math.random() * 100);
         int number2 = (int) (Math.random() * 100);
-        int operatorNumber = (int) (Math.random() * 3);
+        if(number1 < number2){
+            int temp = number1;
+            number1 = number2;
+            number2 = temp;
+        }
+        int operatorNumber = (int) (Math.random() * 4);
         calculShow = number1 + operator[operatorNumber] + number2;
         calculResult = calculate(number1, number2, operator[operatorNumber]);
+        textViewInput.setText(calculShow);
+
     }
 
     private double calculate(int number1, int number2, String s) {
@@ -134,6 +150,8 @@ public class GameActivity extends AppCompatActivity {
         if (enterNumber != null && calculResult == Double.parseDouble(enterNumber)) {
             score++;
             generateNumber();
+            enterNumber = null;
+            textViewCalcul.setText(enterNumber);
         } else {
             healthBar--;
             checkHealthBar();
