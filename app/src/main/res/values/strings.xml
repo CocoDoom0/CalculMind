@@ -1,3 +1,22 @@
 <resources>
     <string name="app_name">CalculMind</string>
+    <string name="buttonHighScore" > Historique </string>
+    <string name="buttonStart"> Démarer </string>
+    <string name="bouton_dot" translatable="false"> . </string>
+    <string name="bouton_del" translatable="false"> Del </string>
+    <string name="bouton_entry" translatable="false"> Entrée </string>
+    <string name="bouton_0" translatable="false">0</string>
+    <string name="bouton_1" translatable="false">1</string>
+    <string name="bouton_2" translatable="false">2</string>
+    <string name="bouton_3" translatable="false">3</string>
+    <string name="bouton_4" translatable="false">4</string>
+    <string name="bouton_5" translatable="false">5</string>
+    <string name="bouton_6" translatable="false">6</string>
+    <string name="bouton_7" translatable="false">7</string>
+    <string name="bouton_8" translatable="false">8</string>
+    <string name="bouton_9" translatable="false">9</string>
+    <string name="toolbar_nettoyer"> Nettoyer !</string>
+    <string name="ERROR_TYPE_OPERATION"> Vous avez déjà un type d\'opération</string>
+    <string name="ERROR_VALUE_TOO_HIGH">Nombre trop grands !</string>
+    <string name="TOOLBAR_CALCUL"> Fais Le calcul !</string>
 </resources>
