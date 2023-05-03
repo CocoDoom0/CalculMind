@@ -53,15 +53,16 @@ public class GameActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.toolbar, menu);
         MenuItem menuItem = menu.findItem(R.id.toolbar_abandon);
-        menuItem.setOnMenuItemClickListener(view -> videLaTextView());
+        menuItem.setOnMenuItemClickListener(view -> stopGame());
         toolbarcoeur1 = menu.findItem(R.id.toolbar_coeur1);
         toolbarcoeur2 = menu.findItem(R.id.toolbar_coeur2);
         toolbarcoeur3 = menu.findItem(R.id.toolbar_coeur3);
         return super.onCreateOptionsMenu(menu);
     }
 
-    private boolean videLaTextView() {
-
+    private boolean stopGame() {
+        healthBar=0;
+        checkHealthBar();
         return true;
     }
 
@@ -169,7 +170,6 @@ public class GameActivity extends AppCompatActivity {
             case "*":
                 return number1 * number2;
             case "/":
-                //arondir le resultat a au dixieme pres
                 return Math.floor(( (double)number1 / (double)number2) * 10) / 10.0;
             default:
                 calculShow = "0";
@@ -178,11 +178,11 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void checkResult() {
+        enterNumber = null;
+        textViewCalcul.setText("...");
         if (enterNumber != null && calculResult == Double.parseDouble(enterNumber)) {
             score++;
             generateNumber();
-            enterNumber = null;
-            textViewCalcul.setText(enterNumber);
         } else {
             healthBar--;
             checkHealthBar();
@@ -190,44 +190,6 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void checkHealthBar() {
-
-        if (healthBar <= 0) {
-            Dialog scoreDialog = new Dialog(this);
-            scoreDialog.setContentView(R.layout.popup_score);
-            TextView scoreTextView = scoreDialog.findViewById(R.id.textView_score);
-            EditText playerName = scoreDialog.findViewById(R.id.TextPersonName);
-            Button valideButton = scoreDialog.findViewById(R.id.buttonScore_valider);
-            Button cancelButton = scoreDialog.findViewById(R.id.buttonScore_annuler);
-            scoreTextView.setText("Votre score est de " + score + " points");
-            //todo trad
-
-            ScoreDatabaseHelper dbHelper = new ScoreDatabaseHelper(this);
-            SQLiteDatabase db = dbHelper.getWritableDatabase();
-
-            valideButton.setOnClickListener(view -> {
-                ContentValues values = new ContentValues();
-                //if player name is empty, set default name
-                if(playerName.getText().toString().isEmpty()){
-                    values.put("name", "John Doe");
-                }
-                values.put("name", playerName.getText().toString());
-                values.put("score", score);
-                db.insert("scores", null, values);
-
-                scoreDialog.dismiss();
-                Intent intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
-            });
-
-            cancelButton.setOnClickListener(view -> {
-                scoreDialog.dismiss();
-                Intent intent = new Intent(this, MainActivity.class);
-                startActivity(intent);
-            });
-
-            scoreDialog.show();
-        }
-
         switch (healthBar){
             case 2:
                 toolbarcoeur1.setIcon(R.color.fond_app);
@@ -239,7 +201,40 @@ public class GameActivity extends AppCompatActivity {
                 break;
             case 0:
                 toolbarcoeur3.setIcon(R.color.fond_app);
-                //lancer page de fin
+                Dialog scoreDialog = new Dialog(this);
+                scoreDialog.setContentView(R.layout.popup_score);
+                TextView scoreTextView = scoreDialog.findViewById(R.id.textView_score);
+                EditText playerName = scoreDialog.findViewById(R.id.TextPersonName);
+                Button valideButton = scoreDialog.findViewById(R.id.buttonScore_valider);
+                Button cancelButton = scoreDialog.findViewById(R.id.buttonScore_annuler);
+                scoreTextView.setText("Votre score est de " + score + " points");
+                //todo trad
+
+                ScoreDatabaseHelper dbHelper = new ScoreDatabaseHelper(this);
+                SQLiteDatabase db = dbHelper.getWritableDatabase();
+
+                valideButton.setOnClickListener(view -> {
+                    ContentValues values = new ContentValues();
+                    //if player name is empty, set default name
+                    if(playerName.getText().toString().isEmpty()){
+                        values.put("name", "John Doe");
+                    }
+                    values.put("name", playerName.getText().toString());
+                    values.put("score", score);
+                    db.insert("scores", null, values);
+
+                    scoreDialog.dismiss();
+                    Intent intent = new Intent(this, MainActivity.class);
+                    startActivity(intent);
+                });
+
+                cancelButton.setOnClickListener(view -> {
+                    scoreDialog.dismiss();
+                    Intent intent = new Intent(this, MainActivity.class);
+                    startActivity(intent);
+                });
+
+                scoreDialog.show();
                 break;
         }
     }
