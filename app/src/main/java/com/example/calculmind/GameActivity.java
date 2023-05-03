@@ -59,6 +59,12 @@ public class GameActivity extends AppCompatActivity {
         toolbarcoeur3 = menu.findItem(R.id.toolbar_coeur3);
         return super.onCreateOptionsMenu(menu);
     }
+
+    private boolean videLaTextView() {
+
+        return true;
+    }
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
