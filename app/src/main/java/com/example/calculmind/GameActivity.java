@@ -3,10 +3,11 @@ package com.example.calculmind;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
 import android.widget.Button;
 import android.widget.TextView;
-
-import java.util.Objects;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -24,16 +25,32 @@ public class GameActivity extends AppCompatActivity {
     private Button buttonDelete;
     private Button buttonDot;
 
+    private MenuItem toolbarcoeur1;
+
+    private  MenuItem toolbarcoeur2;
+
+    private  MenuItem toolbarcoeur3;
+
     private TextView textViewInput;
     private TextView textViewCalcul;
 
     private String calculShow;
     private double calculResult;
     private String enterNumber= null;
-    private Integer healthBar=0;
+    private Integer healthBar=3;
     private Integer score=0;
 
     @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        MenuInflater inflater = getMenuInflater();
+        inflater.inflate(R.menu.toolbar, menu);
+        MenuItem menuItem = menu.findItem(R.id.toolbar_abandon);
+        menuItem.setOnMenuItemClickListener(view -> videLaTextView());
+        toolbarcoeur1 = menu.findItem(R.id.toolbar_coeur1);
+        toolbarcoeur2 = menu.findItem(R.id.toolbar_coeur2);
+        toolbarcoeur3 = menu.findItem(R.id.toolbar_coeur3);
+        return super.onCreateOptionsMenu(menu);
+    }
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_game);
@@ -82,6 +99,12 @@ public class GameActivity extends AppCompatActivity {
         buttonDelete = findViewById(R.id.button_del);
         buttonDelete.setOnClickListener(view -> deleteNumber());;
 
+    }
+
+    private boolean videLaTextView() {
+
+
+        return true;
     }
 
     private void addNumber(int number) {
@@ -161,6 +184,21 @@ public class GameActivity extends AppCompatActivity {
     private void checkHealthBar() {
         if (healthBar == 0) {
             //todo
+        }
+
+        switch (healthBar){
+            case 2:
+                toolbarcoeur1.setIcon(R.color.fond_app);
+                generateNumber();
+                break;
+            case 1:
+                toolbarcoeur2.setIcon(R.color.fond_app);
+                generateNumber();
+                break;
+            case 0:
+                toolbarcoeur3.setIcon(R.color.fond_app);
+                //lancer page de fin
+                break;
         }
     }
 
