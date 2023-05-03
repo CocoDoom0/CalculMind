@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name"></string>
+    <string name="app_name">CalculMind</string>
     <string name="buttonHighScore" > Historique </string>
     <string name="buttonStart"> Démarer </string>
     <string name="bouton_dot" translatable="false"> . </string>

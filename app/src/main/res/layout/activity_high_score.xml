@@ -21,45 +21,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <TextView
-            android:id="@+id/textView4"
+
+    <TextView
+            android:id="@+id/textViewInput"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
             android:text="TextView" />
 
-        <TextView
-            android:id="@+id/textView3"
+        <Button
+            android:id="@+id/btnAcceuil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="TextView" />
-
-        <TextView
-            android:id="@+id/textViewCalcul2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="TextView" />
-
-        <TextView
-            android:id="@+id/textView2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="TextView" />
-
-        <TextView
-            android:id="@+id/textViewCalcul"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:gravity="center"
-            android:text="TextView" />
-
+            android:text="Retour à l'acceuil" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
