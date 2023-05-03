@@ -3,11 +3,16 @@ package com.example.calculmind;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.app.Dialog;
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.provider.Settings;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
+
+import com.example.calculmind.database.ScoreDatabaseHelper;
 
 public class GameActivity extends AppCompatActivity {
 
@@ -160,6 +165,7 @@ public class GameActivity extends AppCompatActivity {
     }
 
     private void checkHealthBar() {
+
         if (healthBar <= 0) {
             Dialog scoreDialog = new Dialog(this);
             scoreDialog.setContentView(R.layout.popup_score);
@@ -167,11 +173,22 @@ public class GameActivity extends AppCompatActivity {
             EditText playerName = scoreDialog.findViewById(R.id.TextPersonName);
             Button valideButton = scoreDialog.findViewById(R.id.buttonScore_valider);
             Button cancelButton = scoreDialog.findViewById(R.id.buttonScore_annuler);
-
             scoreTextView.setText("Votre score est de " + score + " points");
-            //todo trad connard
+            //todo trad
+
+            ScoreDatabaseHelper dbHelper = new ScoreDatabaseHelper(this);
+            SQLiteDatabase db = dbHelper.getWritableDatabase();
+
             valideButton.setOnClickListener(view -> {
-                //todo ajouter le score dans la bdd
+                ContentValues values = new ContentValues();
+                //if player name is empty, set default name
+                if(playerName.getText().toString().isEmpty()){
+                    values.put("name", "John Doe");
+                }
+                values.put("name", playerName.getText().toString());
+                values.put("score", score);
+                db.insert("scores", null, values);
+
                 scoreDialog.dismiss();
                 Intent intent = new Intent(this, MainActivity.class);
                 startActivity(intent);

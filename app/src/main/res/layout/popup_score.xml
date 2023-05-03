@@ -21,8 +21,8 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:ems="10"
+        android:hint="Votre nom"
         android:inputType="textPersonName"
-        android:text="Votre nom"
         tools:layout_editor_absoluteX="103dp"
         tools:layout_editor_absoluteY="301dp" />
 
@@ -39,6 +39,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Annuler"
+        android:visibility="visible"
         tools:layout_editor_absoluteX="153dp"
         tools:layout_editor_absoluteY="437dp" />
 </androidx.constraintlayout.widget.ConstraintLayout>
