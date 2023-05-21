@@ -33,6 +33,8 @@ public class GameActivity extends AppCompatActivity {
     private Button buttonDelete;
     private Button buttonDot;
 
+    private Button buttonAbandon;
+    private MenuItem toolbarscrore;
     private MenuItem toolbarcoeur1;
 
     private  MenuItem toolbarcoeur2;
@@ -54,9 +56,11 @@ public class GameActivity extends AppCompatActivity {
         inflater.inflate(R.menu.toolbar, menu);
         MenuItem menuItem = menu.findItem(R.id.toolbar_abandon);
         menuItem.setOnMenuItemClickListener(view -> videLaTextView());
+        toolbarscrore = menu.findItem(R.id.toolbar_score);
         toolbarcoeur1 = menu.findItem(R.id.toolbar_coeur1);
         toolbarcoeur2 = menu.findItem(R.id.toolbar_coeur2);
         toolbarcoeur3 = menu.findItem(R.id.toolbar_coeur3);
+
         return super.onCreateOptionsMenu(menu);
     }
 
@@ -111,7 +115,7 @@ public class GameActivity extends AppCompatActivity {
         buttonEnter.setOnClickListener(view -> checkResult());
 
         buttonDelete = findViewById(R.id.button_del);
-        buttonDelete.setOnClickListener(view -> deleteNumber());;
+        buttonDelete.setOnClickListener(view -> deleteNumber());
 
     }
 
@@ -143,6 +147,7 @@ public class GameActivity extends AppCompatActivity {
             textViewCalcul.setText(enterNumber);
         }
     }
+
 
     private void generateNumber() {
         String[] operator = {"+", "-", "*", "/"};
@@ -180,6 +185,7 @@ public class GameActivity extends AppCompatActivity {
     private void checkResult() {
         if (enterNumber != null && calculResult == Double.parseDouble(enterNumber)) {
             score++;
+            toolbarscrore.setTitle(score.toString());
             generateNumber();
             enterNumber = null;
             textViewCalcul.setText(enterNumber);
@@ -198,7 +204,7 @@ public class GameActivity extends AppCompatActivity {
             EditText playerName = scoreDialog.findViewById(R.id.TextPersonName);
             Button valideButton = scoreDialog.findViewById(R.id.buttonScore_valider);
             Button cancelButton = scoreDialog.findViewById(R.id.buttonScore_annuler);
-            scoreTextView.setText("Votre score est de " + score + " points");
+            scoreTextView.setText(getString(R.string.text_popup_message) + " " + score + " " + getString(R.string.text_popup_message2));
             //todo trad
 
             ScoreDatabaseHelper dbHelper = new ScoreDatabaseHelper(this);

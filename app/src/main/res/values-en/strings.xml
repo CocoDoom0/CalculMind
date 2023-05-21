@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="buttonHighScore"  > Historic </string>
+    <string name="buttonStart" > Start </string>
+    <string name="bouton_del" > Del </string>
+    <string name="bouton_entry" > Enter </string>
+    <string name="toolbar_abandon" > Leave </string>
+    <string name="bouton_retour_accueil" > Back to home </string>
+    <string name="bouton_popup_valider" > Valid </string>
+    <string name="bouton_popup_annuler" > Cancel </string>
+    <string name="bouton_popup_titre" > Lost ! </string>
+    <string name="text_popup_message" > Your score is : </string>
+    <string name="text_popup_message2" > points </string>
+    <string name="bouton_popup_pseudo" > Enter our nickname </string>
+    <string name="bouton_highscore_showmore" > Show more </string>
+</resources>

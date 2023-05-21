@@ -1,10 +1,10 @@
 <resources>
-    <string name="app_name">CalculMind</string>
-    <string name="buttonHighScore" > Historique </string>
-    <string name="buttonStart"> Démarer </string>
+    <string name="app_name" translatable="false">CalculMind</string>
+    <string name="buttonHighScore"  > Historique </string>
+    <string name="buttonStart" > Démarer </string>
     <string name="bouton_dot" translatable="false"> . </string>
-    <string name="bouton_del" translatable="false"> Del </string>
-    <string name="bouton_entry" translatable="false"> Entrée </string>
+    <string name="bouton_del" > Supp </string>
+    <string name="bouton_entry" > Entrée </string>
     <string name="bouton_0" translatable="false">0</string>
     <string name="bouton_1" translatable="false">1</string>
     <string name="bouton_2" translatable="false">2</string>
@@ -15,6 +15,14 @@
     <string name="bouton_7" translatable="false">7</string>
     <string name="bouton_8" translatable="false">8</string>
     <string name="bouton_9" translatable="false">9</string>
-    <string name="toolbar_abandon"> Abandonner </string>
-    <string name="toolbar_score"> 0 </string>
+    <string name="toolbar_abandon" > Abandonner </string>
+    <string name="toolbar_score" translatable="false"> 0 </string>
+    <string name="bouton_retour_accueil" > Retour Accueil</string>
+    <string name="bouton_popup_valider" > Valider </string>
+    <string name="bouton_popup_annuler" > Annuler </string>
+    <string name="bouton_popup_titre" > Perdu ! </string>
+    <string name="text_popup_message" > Votre score est de : </string>
+    <string name="text_popup_message2" > points </string>
+    <string name="bouton_popup_pseudo" > Entrez votre pseudo </string>
+    <string name="bouton_highscore_showmore" > Montrer plus </string>
 </resources>

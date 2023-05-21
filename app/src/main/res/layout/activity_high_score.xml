@@ -28,12 +28,19 @@
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:gravity="center"
+            android:textSize="30dp"
+            android:textStyle="bold"
             android:text="TextView" />
 
+        <Button
+            android:id="@+id/btnShowMore"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bouton_highscore_showmore" />
         <Button
             android:id="@+id/btnAcceuil"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Retour à l'acceuil" />
+            android:text="@string/bouton_retour_accueil" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -2,44 +2,65 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent">
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    tools:context=".HighScoreActivity">
 
-    <TextView
-        android:id="@+id/textView_score"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="153dp"
-        android:layout_marginEnd="148dp"
-        android:text="Votre score: 0 pts"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        tools:layout_editor_absoluteY="266dp" />
+        android:orientation="vertical"
+        android:padding="16dp">
 
-    <EditText
-        android:id="@+id/TextPersonName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:ems="10"
-        android:hint="Votre nom"
-        android:inputType="textPersonName"
-        tools:layout_editor_absoluteX="103dp"
-        tools:layout_editor_absoluteY="301dp" />
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/bouton_popup_titre"
+            android:textSize="18sp"
+            android:textStyle="bold" />
 
-    <Button
-        android:id="@+id/buttonScore_valider"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Valider"
-        tools:layout_editor_absoluteX="157dp"
-        tools:layout_editor_absoluteY="380dp" />
+        <Space
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
 
-    <Button
-        android:id="@+id/buttonScore_annuler"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Annuler"
-        android:visibility="invisible"
-        tools:layout_editor_absoluteX="153dp"
-        tools:layout_editor_absoluteY="437dp" />
+        <TextView
+            android:id="@+id/textView_score"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text=""
+            app:layout_constraintEnd_toEndOf="@id/TextPersonName"
+            app:layout_constraintStart_toStartOf="@id/TextPersonName"
+            tools:layout_editor_absoluteY="266dp" />
+
+        <EditText
+            android:id="@+id/TextPersonName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/text_popup_message" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/buttonScore_valider"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/bouton_popup_valider" />
+
+            <Button
+                android:id="@+id/buttonScore_annuler"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="16dp"
+                android:backgroundTint="@color/white"
+                android:text="@string/bouton_popup_annuler"
+                android:textColor="@color/fond_app" />
+        </LinearLayout>
+
+    </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+

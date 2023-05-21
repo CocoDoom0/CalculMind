@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="buttonHighScore"  > Historisch </string>
+    <string name="buttonStart" > Starten </string>
+    <string name="bouton_del" > Lös </string>
+    <string name="bouton_entry" > Zwischen </string>
+    <string name="toolbar_abandon" > Aufgeben </string>
+    <string name="bouton_retour_accueil" > Zurück zur Startseite </string>
+    <string name="bouton_popup_valider" > Bestätigen </string>
+    <string name="bouton_popup_annuler" > Stornieren </string>
+    <string name="bouton_popup_titre" > Verloren ! </string>
+    <string name="text_popup_message" > Dein Ergebnis ist : </string>
+    <string name="text_popup_message2" > Punkte </string>
+    <string name="bouton_popup_pseudo" > Trage deinen Spitznamen ein </string>
+    <string name="bouton_highscore_showmore" > Mehr anzeigen </string>
+</resources>
