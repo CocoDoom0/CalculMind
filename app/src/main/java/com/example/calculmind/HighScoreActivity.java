@@ -18,20 +18,6 @@ import java.util.List;
 
 public class HighScoreActivity extends AppCompatActivity {
 
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        inflater.inflate(R.menu.toolbar, menu);
-        MenuItem menuItem = menu.findItem(R.id.toolbar_abandon);
-        menuItem.setOnMenuItemClickListener(view -> videLaTextView());
-        return super.onCreateOptionsMenu(menu);
-    }
-
-    private boolean videLaTextView() {
-
-
-        return true;
-    }
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -47,7 +33,7 @@ public class HighScoreActivity extends AppCompatActivity {
         };
 
         String sortOrder = "score DESC";
-        String limit = "10";
+        String limit = "5";
 
         Cursor cursor = db.query(
                 "scores",            // Nom de la table
@@ -68,8 +54,13 @@ public class HighScoreActivity extends AppCompatActivity {
         }
         cursor.close();
         StringBuilder sb = new StringBuilder();
-        for (int i = 0; i < Math.min(topScores.size(), 10); i++) {
-            sb.append(topScores.get(i));
+        for (int i = 0; i <= 4 ; i++) {
+            sb.append(i+1).append(" | ");
+            try{
+                sb.append(topScores.get(i));
+            } catch (IndexOutOfBoundsException e) {
+                sb.append(" ");
+            }
             sb.append("\n");
         }
         String topScoresText = sb.toString();
