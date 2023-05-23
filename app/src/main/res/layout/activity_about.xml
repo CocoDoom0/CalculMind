@@ -4,40 +4,38 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/gradient_back"
-    tools:context=".MainActivity">
+    tools:context=".AboutActivity">
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="32dp"
+        android:layout_weight="1"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <ImageView
-            android:id="@+id/imageView"
+        <TextView
+            android:id="@+id/textView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            app:srcCompat="@drawable/king_crown_logo_white_transparent__king_golden_crown_with_red_diamonds_vector_logo__king__golden_crown__golden_crown_gaming_logo_png_image_for_free_download_1_" />
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="binôme : \n Rémi Mahieux \n Valentin Baglan \n\n Git :  \n https://github.com/CocoDoom0/CalculMind.git "
+            android:textSize="30dp"
+            android:textStyle="bold"
+            />
 
         <Button
-            android:id="@+id/button"
+            android:id="@+id/button_retour_accueil_about"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/buttonStart" />
+            android:text="@string/bouton_retour_accueil" />
 
-        <Button
-            android:id="@+id/button2"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/buttonHighScore" />
-
-        <Button
-            android:id="@+id/button_about"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:text="@string/bouton_about" />
     </LinearLayout>
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -34,6 +34,7 @@ public class GameActivity extends AppCompatActivity {
     private Button buttonDot;
 
     private Button buttonAbandon;
+
     private MenuItem toolbarscrore;
     private MenuItem toolbarcoeur1;
 

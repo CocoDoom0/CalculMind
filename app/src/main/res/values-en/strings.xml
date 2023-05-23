@@ -13,4 +13,5 @@
     <string name="text_popup_message2" > points </string>
     <string name="bouton_popup_pseudo" > Enter our nickname </string>
     <string name="bouton_highscore_showmore" > Show more </string>
+    <string name="bouton_about" > About </string>
 </resources>

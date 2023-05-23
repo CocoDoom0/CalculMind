@@ -14,4 +14,5 @@
     <string name="text_popup_message2" > Punkte </string>
     <string name="bouton_popup_pseudo" > Trage deinen Spitznamen ein </string>
     <string name="bouton_highscore_showmore" > Mehr anzeigen </string>
+    <string name="bouton_about" > Über </string>
 </resources>

@@ -50,22 +50,35 @@ public class HighScoreActivity extends AppCompatActivity {
         while(cursor.moveToNext()) {
             String name = cursor.getString(cursor.getColumnIndexOrThrow("name"));
             int score = cursor.getInt(cursor.getColumnIndexOrThrow("score"));
-            topScores.add(name + " : " + score);
+            topScores.add(name + "\n" + score + " points");
         }
         cursor.close();
-        StringBuilder sb = new StringBuilder();
-        for (int i = 0; i <= 4 ; i++) {
-            sb.append(i+1).append(" | ");
+
+        // boucle for de 0 a 2
+        for (int i = 0; i < 2; i++) {
+            StringBuilder sb = new StringBuilder();
             try{
                 sb.append(topScores.get(i));
             } catch (IndexOutOfBoundsException e) {
                 sb.append(" ");
             }
             sb.append("\n");
+            String topScoresText = sb.toString();
+            switch (i){
+                case 0:
+                    TextView textView = findViewById(R.id.text_view_winner);
+                    textView.setText(topScoresText);
+                case 1:
+                    TextView textView1 = findViewById(R.id.text_view_second);
+                    textView1.setText(topScoresText);
+                case 2:
+                    TextView textView2 = findViewById(R.id.text_view_troisieme);
+                    textView2.setText(topScoresText);
+            }
+
+
         }
-        String topScoresText = sb.toString();
-        TextView textView = findViewById(R.id.textViewInput);
-        textView.setText(topScoresText);
+
 
         button.setOnClickListener(view -> {
             finish();
