@@ -55,17 +55,19 @@ public class GameActivity extends AppCompatActivity {
         MenuInflater inflater = getMenuInflater();
         inflater.inflate(R.menu.toolbar, menu);
         MenuItem menuItem = menu.findItem(R.id.toolbar_abandon);
-        menuItem.setOnMenuItemClickListener(view -> videLaTextView());
+        menuItem.setOnMenuItemClickListener(view -> abandon());
         toolbarscrore = menu.findItem(R.id.toolbar_score);
         toolbarcoeur1 = menu.findItem(R.id.toolbar_coeur1);
         toolbarcoeur2 = menu.findItem(R.id.toolbar_coeur2);
         toolbarcoeur3 = menu.findItem(R.id.toolbar_coeur3);
-
         return super.onCreateOptionsMenu(menu);
     }
 
-    private boolean videLaTextView() {
-
+    private boolean abandon() {
+        while(healthBar != 0){
+            healthBar--;
+            checkHealthBar();
+        }
         return true;
     }
 
@@ -141,18 +143,20 @@ public class GameActivity extends AppCompatActivity {
         if (enterNumber != null) {
             if (enterNumber.length() == 1) {
                 enterNumber = null;
+                textViewCalcul.setText("...");
             } else {
                 enterNumber = enterNumber.substring(0, enterNumber.length() - 1);
+                textViewCalcul.setText(enterNumber);
             }
-            textViewCalcul.setText(enterNumber);
+
         }
     }
 
 
     private void generateNumber() {
         String[] operator = {"+", "-", "*", "/"};
-        int number1 = (int) (Math.random() * 100);
-        int number2 = (int) (Math.random() * 100);
+        int number1 = (int) (Math.random() * 15)+1;
+        int number2 = (int) (Math.random() * 15)+1;
         if(number1 < number2){
             int temp = number1;
             number1 = number2;
@@ -187,12 +191,12 @@ public class GameActivity extends AppCompatActivity {
             score++;
             toolbarscrore.setTitle(score.toString());
             generateNumber();
-            enterNumber = null;
-            textViewCalcul.setText(enterNumber);
         } else {
             healthBar--;
             checkHealthBar();
         }
+        enterNumber = null;
+        textViewCalcul.setText("...");
     }
 
     private void checkHealthBar() {

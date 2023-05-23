@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <string name="buttonHighScore"  > Historic </string>
+    <string name="buttonHighScore"  > History </string>
     <string name="buttonStart" > Start </string>
     <string name="bouton_del" > Del </string>
     <string name="bouton_entry" > Enter </string>

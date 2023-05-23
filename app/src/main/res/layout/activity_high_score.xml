@@ -36,7 +36,8 @@
             android:id="@+id/btnShowMore"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/bouton_highscore_showmore" />
+            android:text="@string/bouton_highscore_showmore"
+            android:visibility="invisible" />
         <Button
             android:id="@+id/btnAcceuil"
             android:layout_width="match_parent"
